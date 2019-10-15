@@ -1,0 +1,28 @@
+<mat-toolbar color="primary" class="mat-elevation-z3">
+  <nav>
+    <a mat-button>Link #1</a>
+    <a mat-button>Link #2</a>
+    <a mat-button [matMenuTriggerFor]="menu"
+      ><mat-icon>settings</mat-icon> Link #3</a
+    >
+  </nav>
+</mat-toolbar>
+<mat-menu #menu="matMenu" [overlapTrigger]="false">
+  <button mat-menu-item routerLink="jobHistory">
+    <mat-icon>home</mat-icon>
+    <span>Home</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>people_outline</mat-icon>
+    <span>Connecting</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>videocam</mat-icon>
+    <span>Let's talk</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>exit_to_app</mat-icon>
+    <span>Logout</span>
+  </button>
+</mat-menu>
+<router-outlet></router-outlet>

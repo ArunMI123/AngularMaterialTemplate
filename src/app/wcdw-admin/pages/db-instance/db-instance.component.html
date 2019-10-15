@@ -1,0 +1,27 @@
+<div fxLayout="row" fxLayoutAlign="center center" style="margin-top: 5%">    
+    <mat-card fxFlex="70" >
+            <form [formGroup]="stateForm">
+                    <mat-form-field fxLayoutAlign="center center" >
+                      <input type="text" matInput placeholder="Select your db instance" formControlName="stateGroup" required [matAutocomplete]="autoGroup">
+                        <mat-autocomplete #autoGroup="matAutocomplete">
+                          <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
+                            <mat-option *ngFor="let name of group.names" [value]="name">
+                              {{name}}
+                            </mat-option>
+                        </mat-optgroup>
+                      </mat-autocomplete>
+                    </mat-form-field>
+                    <mat-error *ngIf="stateForm.get('stateGroup').hasError('required') && stateForm.get('stateGroup').touched">Please choose</mat-error>
+                  </form>
+                  <div fxLayoutAlign="center center">
+                        <button mat-stroked-button  routerLink="dashboard">Dashboard</button>
+
+                  </div>
+  </mat-card>
+  </div>
+  <router-outlet></router-outlet>
+  
+
+
+
+

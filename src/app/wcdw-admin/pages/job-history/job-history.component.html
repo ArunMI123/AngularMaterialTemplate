@@ -1,0 +1,94 @@
+<mat-card style="margin-top: 2%">
+<div fxLayout="row" >
+    <div fxLayout="row">
+        <div fxFlex="30" class="action-blurb">
+            <form [formGroup]="jobDefinationForm">
+                <mat-form-field>
+                  <input type="text" matInput placeholder="Job Defination" formControlName="jobDefination" required [matAutocomplete]="autoDefination">
+                    <mat-autocomplete #autoDefination="matAutocomplete">
+                      <mat-optgroup *ngFor="let group of jobDefinationOptions | async" [label]="group.letter">
+                        <mat-option *ngFor="let name of group.names" [value]="name">
+                          {{name}}
+                        </mat-option>
+                    </mat-optgroup>
+                  </mat-autocomplete>
+
+                  <mat-error *ngIf="jobDefinationForm.get('jobDefination').hasError('required') && jobDefinationForm.get('jobDefination').touched">Please choose</mat-error>
+
+                </mat-form-field>
+              </form>
+        </div>
+
+
+       <div fxFlex="30" class="action-blurb" fxFlexOffset="5">
+            <form [formGroup]="jobStatusForm">
+                <mat-form-field>
+                  <input type="text" matInput placeholder="Status" formControlName="jobStatus" required [matAutocomplete]="autoStatus">
+                    <mat-autocomplete #autoStatus="matAutocomplete">
+                      <mat-optgroup *ngFor="let group of jobStatusOptions | async" [label]="group.letter">
+                        <mat-option *ngFor="let name of group.names" [value]="name">
+                          {{name}}
+                        </mat-option>
+                    </mat-optgroup>
+                  </mat-autocomplete>
+                  <mat-error *ngIf="jobStatusForm.get('jobStatus').hasError('required') && jobStatusForm.get('jobStatus').touched">Please choose</mat-error>
+
+                </mat-form-field>
+              </form>
+        </div>
+        <div fxFlex="30" class="action-blurb" fxFlexOffset="5">
+            <form [formGroup]="jobSnapshotForm">
+                <mat-form-field>
+                  <input type="text" matInput placeholder="Snapshot Date" formControlName="jobSnapshot" required [matAutocomplete]="autoSnapshot">
+                    <mat-autocomplete #autoSnapshot="matAutocomplete">
+                      <mat-optgroup *ngFor="let group of jobSnapshotOptions | async" [label]="group.letter">
+                        <mat-option *ngFor="let name of group.names" [value]="name">
+                          {{name}}
+                        </mat-option>
+                    </mat-optgroup>
+                  </mat-autocomplete>
+                  <mat-error *ngIf="jobSnapshotForm.get('jobSnapshot').hasError('required') && jobSnapshotForm.get('jobSnapshot').touched">Please choose</mat-error>
+
+                </mat-form-field>
+              </form>
+        </div>
+        <div fxFlex="30" class="action-blurb" fxFlexOffset="5">
+            <form [formGroup]="jobStartTimeForm">
+                <mat-form-field>
+                  <input type="text" matInput placeholder="Start Time" formControlName="jobStartTime" required [matAutocomplete]="autoStartTime">
+                    <mat-autocomplete #autoStartTime="matAutocomplete">
+                      <mat-optgroup *ngFor="let group of jobStartTimeOptions | async" [label]="group.letter">
+                        <mat-option *ngFor="let name of group.names" [value]="name">
+                          {{name}}
+                        </mat-option>
+                    </mat-optgroup>
+                  </mat-autocomplete>
+                  <mat-error *ngIf="jobStartTimeForm.get('jobStartTime').hasError('required') && jobStartTimeForm.get('jobStartTime').touched">Please choose</mat-error>
+
+                </mat-form-field>
+              </form>
+        </div> 
+
+
+        
+    </div>
+</div>
+
+
+<div fxLayout="row" >
+    <div fxLayout="row">
+        <div fxFlex="30" class="action-blurb" fxFlexOffset="5">
+            <button mat-raised-button color="warn">Search</button>
+      </div>
+      <div fxFlex="30" class="action-blurb" fxFlexOffset="7">
+        <button mat-raised-button color="warn">Clear</button>
+  </div>
+  <div fxFlex="30" class="action-blurb" fxFlexOffset="5">
+    <button mat-raised-button color="warn">Layout</button>
+</div>
+    </div>
+
+</div>
+</mat-card>
+
+<app-job-history-table></app-job-history-table>
